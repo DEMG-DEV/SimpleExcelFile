@@ -20,12 +20,11 @@ def send_email(fromaddr, toaddr, passwd, subject, body, filename):
 
 
 filename = 'nomina.xlsx'
-passwd = 'Guardado22'
-subject = 'Nomina de la semana'
-fromaddr = 'hack.master.m@gmail.com'
-#toaddr = ['admonproyectos@wssgroup.com', 'chernandezt@wssgroup.com', 'adsoto@wssgroup.com']
-toaddr = ["demg@outlook.com"]
-body = 'Hola un cordial saludo, soy David Enrique Mendez Guardado, te adjunto la nomina de la semana.'
+passwd = ''
+subject = 'Reporte de la semana'
+fromaddr = ''
+toaddr = ['mail1', 'mail2', 'mailn']
+body = 'Hola un cordial saludo, soy [nombre], te adjunto el reporte de horas de la semana.'
 init_week, end_week = create_file(filename)
 subject += " " + init_week.strftime('%d/%m/%y') + " a " + end_week.strftime('%d/%m/%y')
 send_email(fromaddr, toaddr, passwd, subject, body, filename)
