@@ -11,10 +11,12 @@ class ExcelFile():
     def __init__(self):
         self.file = Workbook()
         self.sheet = self.file.active
-        self.date = datetime.datetime.now()
         self.details = DateDetails()
         self.cells = ["B", "C", "D", "E", "F"]
         self.work_hours = "9.5"
+
+    def set_datetime(self, datetime):
+        self.date = datetime
 
     def save_as(self, filename):
         self.file.save(filename)
@@ -33,3 +35,6 @@ class ExcelFile():
     def set_data(self):
         for i in self.cells:
             self.sheet[i + '5'] = self.work_hours
+
+    def get_week(self):
+        return self.details.get_init_end_week(self.date.year, int(self.date.strftime('%V')), 4)

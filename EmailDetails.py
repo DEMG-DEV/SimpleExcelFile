@@ -1,4 +1,5 @@
-import smtplib, os
+import smtplib
+import os
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
@@ -7,24 +8,26 @@ from email import encoders
 
 class EmailDetails():
 
-    def __init__(self):
-        pass
+    def __init__(self, fromaddr, toaddr, passwd, subject, body, filename):
+        self.fromaddr = fromaddr
+        self.toaddr = toaddr
+        self.filename = filename
+        self.passwd = passwd
+        self.subject = subject
+        self.body = body
 
     def send_email(self):
-        fromaddr = "hack.master.m@gmail.com"
-        toaddr = "demg@outlook.com"
-
         msg = MIMEMultipart()
 
-        msg['From'] = fromaddr
-        msg['To'] = toaddr
-        msg['Subject'] = "Nomina de la semana"
+        msg['From'] = self.fromaddr
+        msg['To'] = '%s' % ','.join(self.toaddr)
+        msg['Subject'] = self.subject
 
-        body = "Hola un cordial saludo, soy David Enrique Mendez Guardado, te adjunto la nomina de la semana."
+        body = self.body
         msg.attach(MIMEText(body, 'plain'))
 
         path = os.path.dirname(os.path.abspath(__file__))
-        filename = "Sample.xlsx"
+        filename = self.filename
         attachment = open(str(path) + '\\' + filename, "rb")
 
         part = MIMEBase('application', 'octet-stream')
@@ -36,7 +39,7 @@ class EmailDetails():
 
         server = smtplib.SMTP('smtp.gmail.com', 587)
         server.starttls()
-        server.login(fromaddr, "Guardado22")
+        server.login(self.fromaddr, self.passwd)
         text = msg.as_string()
-        server.sendmail(fromaddr, toaddr, text)
+        server.sendmail(self.fromaddr, self.toaddr, text)
         server.quit()
