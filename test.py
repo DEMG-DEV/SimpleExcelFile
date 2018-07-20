@@ -4,7 +4,7 @@ from ExcelFile import *
 
 def create_file(filename):
     file = ExcelFile()
-    file.set_datetime(datetime.datetime(2018, 6, 28))
+    file.set_datetime(datetime.datetime.now())
     file.set_headers()
     file.set_data()
     file.set_styles()
