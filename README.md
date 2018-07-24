@@ -7,7 +7,7 @@ sirve para ver la horas de trabajo realizadas.
 - Python 3.x
 - Paquetes Python:
     - Datetime
-    - openpyxl
+    - openpyxl = 2.5.4
     - email
     - calendar
 
