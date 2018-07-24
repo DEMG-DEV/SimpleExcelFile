@@ -23,7 +23,8 @@ El projecto se estructura de la siguiente manera:
         - ExcelFile.py
         - main.py
     - Test
-        - test.py
+        - test_file.py
+        - test_mail.py
         
 ## Ejecución
 - main.py
