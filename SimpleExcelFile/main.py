@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # _*_coding: utf-8_*_
 
-from ExcelFile import *
-from EmailDetails import *
+from .ExcelFile import *
+from .EmailDetails import *
 import datetime
 
 

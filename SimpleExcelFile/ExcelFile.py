@@ -1,6 +1,6 @@
 from openpyxl import Workbook
 from openpyxl.styles import PatternFill, Font
-from DateDetails import *
+from .DateDetails import *
 
 
 class ExcelFile():
@@ -10,8 +10,9 @@ class ExcelFile():
         self.sheet = self.file.active
         self.details = DateDetails()
         self.cells = ["A", "B", "C", "D", "E", "F"]
-        self.Acells = []
+        self.acells = []
         self.work_hours = "9.5"
+        self.date = None
 
     def set_datetime(self, datetime):
         self.date = datetime
@@ -40,14 +41,14 @@ class ExcelFile():
                 try:
                     day = init_week.day + 1
                     init_week = date(init_week.year, init_week.month, day)
-                    self.Acells.append(i)
+                    self.acells.append(i)
                 except Exception as err:
-                    self.Acells.append(i)
+                    self.acells.append(i)
                     self.cells.clear()
                     return
 
     def set_data(self):
-        for i in self.Acells:
+        for i in self.acells:
             if i != "A":
                 self.sheet[i + '5'] = self.work_hours
                 self.sheet[i + '6'] = self.work_hours
@@ -64,7 +65,7 @@ class ExcelFile():
         a2.font = ft
         ft = Font(name="Calibri", size="18", bold="True")
         fill = PatternFill(fill_type="solid", start_color='5b9bd5', end_color='5b9bd5')
-        for i in self.Acells:
+        for i in self.acells:
             cell = self.sheet[i + '4']
             cell.font = ft
             cell.fill = fill
@@ -74,7 +75,7 @@ class ExcelFile():
                 self.sheet.column_dimensions[i].width = 17.56
         ft = Font(name="Calibri", size="11")
         fill = PatternFill(fill_type="solid", start_color='ffc000', end_color='ffc000')
-        for i in self.Acells:
+        for i in self.acells:
             cell = self.sheet[i + '5']
             cell.font = ft
             cell = self.sheet[i + '6']
