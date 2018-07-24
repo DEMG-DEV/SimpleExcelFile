@@ -1,7 +1,5 @@
-#!/usr/bin/env python
-# _*_coding: utf-8_*_
-
 from datetime import date, timedelta
+import calendar
 
 
 class DateDetails():
@@ -16,4 +14,10 @@ class DateDetails():
         else:
             d = d - timedelta(d.weekday())
         dlt = timedelta(days=(week - 1) * 7)
-        return d + dlt, d + dlt + timedelta(days=days)
+        init_week = d + dlt
+        end_week = d + dlt + timedelta(days=days)
+        return init_week, end_week
+
+    def get_month_day_range(self, date):
+        last_day = date.replace(day=calendar.monthrange(date.year, date.month)[1])
+        return last_day
