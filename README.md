@@ -1,7 +1,9 @@
 # SimpleExcelFile
 Este repositorio genera un reporte basado en el formato que
 pide la empresa Internacional de Sistemas, este reporte
-sirve para ver la horas de trabajo realizadas.
+sirve para ver la horas de trabajo realizadas. el siguiente es un ejemplo del archivo enviado:
+
+![alt-image](https://i.imgur.com/ggr6Rbl.png "Reporte de Horas")
 
 ## Requisitos
 - Python 3.x
