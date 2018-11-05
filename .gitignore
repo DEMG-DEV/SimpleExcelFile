@@ -1,3 +1,6 @@
 reporte_horas.xlsx
 .idea/sonarlint
 *.pyc
+/.idea
+/.sonarlint
+/__pycache__
